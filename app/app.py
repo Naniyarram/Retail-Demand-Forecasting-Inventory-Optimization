@@ -11,9 +11,6 @@ st.set_page_config(page_title="Retail Demand Forecasting", layout="wide")
 
 st.title("📦 Retail Demand Forecasting & Inventory Optimization")
 
-# -----------------------
-# LLM Client
-# -----------------------
 
 import os
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
@@ -62,11 +59,6 @@ def generate_insight(question, avg_demand, safety_stock, reorder_point,
 
     return response.choices[0].message.content
 
-
-# -----------------------
-# Load Data
-# -----------------------
-
 @st.cache_data
 def load_data():
     df = pd.read_csv("weekly_sales.csv", parse_dates=["Date"])
@@ -74,9 +66,7 @@ def load_data():
 
 weekly_ml = load_data()
 
-# -----------------------
-# Feature Split
-# -----------------------
+
 
 features = [c for c in weekly_ml.columns if c not in ["Weekly_Sales", "Date"]]
 
@@ -88,9 +78,6 @@ test_ml  = weekly_ml[weekly_ml["Date"] > split_date]
 xtrain, ytrain = train_ml[features], train_ml["Weekly_Sales"]
 xtest,  ytest  = test_ml[features],  test_ml["Weekly_Sales"]
 
-# -----------------------
-# Load Trained Model
-# -----------------------
 
 @st.cache_resource
 def load_model():
@@ -100,9 +87,7 @@ model = load_model()
 
 preds = model.predict(xtest)
 
-# -----------------------
-# Forecast Accuracy
-# -----------------------
+
 
 mae = mean_absolute_error(ytest, preds)
 rmse = np.sqrt(mean_squared_error(ytest, preds))
@@ -117,8 +102,7 @@ col2.metric("RMSE", f"{rmse:,.2f}")
 col3.metric("MAPE", f"{mape:.2f}%")
 
 # -----------------------
-# Inventory Calculations
-# -----------------------
+
 
 forecast_series = pd.Series(preds, index=test_ml["Date"])
 
@@ -177,9 +161,6 @@ excess_inventory = max(0, current_inventory - max_safe_inventory)
 
 st.metric("Excess Inventory", f"{excess_inventory:,.0f}")
 
-# -----------------------
-# Reorder Recommendation
-# -----------------------
 
 reorder_qty = max(0, reorder_point - current_inventory)
 
@@ -192,9 +173,6 @@ inventory_gap = current_inventory - reorder_point
 
 st.metric("Inventory Gap", f"{inventory_gap:,.0f}")
 
-# -----------------------
-# Demand Forecast Plot
-# -----------------------
 
 st.subheader("📈 Demand Forecast")
 
@@ -210,9 +188,7 @@ ax.set_ylabel("Weekly Sales")
 
 st.pyplot(fig)
 
-# -----------------------
-# Inventory Metrics
-# -----------------------
+
 
 st.subheader("📊 Inventory Optimization Metrics")
 
@@ -222,9 +198,6 @@ col1.metric("Average Weekly Demand", f"{avg_demand:,.0f}")
 col2.metric("Safety Stock", f"{safety_stock:,.0f}")
 col3.metric("Reorder Point", f"{reorder_point:,.0f}")
 
-# -----------------------
-# Business Insight
-# -----------------------
 
 st.subheader("🧠 Replenishment Insight")
 
@@ -237,9 +210,6 @@ achieve a **95% service level** while minimizing stock-out risk.
 """
 )
 
-# -----------------------
-# AI Assistant
-# -----------------------
 
 
 st.subheader("🤖 AI Supply Chain Assistant")
