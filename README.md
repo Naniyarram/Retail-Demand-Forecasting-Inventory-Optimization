@@ -1,4 +1,4 @@
-# 🧠 Retail Demand Forecasting & Inventory Optimization System
+#  Retail Demand Forecasting & Inventory Optimization System
 
 **A production-oriented ML system that converts demand forecasts into real inventory decisions at store–product level.**
 
@@ -8,16 +8,16 @@
 
 ## ⚡ Quick Snapshot
 
-* 📊 Store-product level demand forecasting (~1.26% MAPE, walk-forward)
-* 📦 Inventory decision engine (WOI, Reorder Point, Utilization)
-* ⚠️ Risk detection (REORDER / OVERSTOCK / CRITICAL_OVERSTOCK)
-* ⚡ FastAPI-based real-time inference APIs
-* 📊 Streamlit dashboard (API-driven)
-* 🤖 LLM-based assistant for structured business actions
+* Store-product level demand forecasting (~1.26% MAPE, walk-forward)
+* Inventory decision engine (WOI, Reorder Point, Utilization)
+* Risk detection (REORDER / OVERSTOCK / CRITICAL_OVERSTOCK)
+* FastAPI-based real-time inference APIs
+* Streamlit dashboard (API-driven)
+* LLM-based assistant for structured business actions
 
 ---
 
-## 🚀 Evolution: From Model → System (v1 → v2)
+## Evolution: From Model → System (v1 → v2)
 
 ### 🔹 v1 — Initial Project
 
@@ -43,7 +43,7 @@ This project was transformed into a **production-grade system**:
 * Dockerized deployment
 * Unit testing for APIs and services
 
-👉 This upgrade shifts the project from:
+-->This upgrade shifts the project from:
 
 ```text
 ML Model → Decision Intelligence System
@@ -51,7 +51,7 @@ ML Model → Decision Intelligence System
 
 ---
 
-## 🎯 Problem
+## Problem
 
 Retail inventory decisions depend on three key questions:
 
@@ -63,7 +63,7 @@ Most ML projects answer only the first.
 
 ---
 
-## 💡 Solution Approach
+## Solution Approach
 
 ```text
 Forecast → Inventory Metrics → Risk Detection → Action
@@ -71,7 +71,7 @@ Forecast → Inventory Metrics → Risk Detection → Action
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ```
 Raw Data
@@ -110,7 +110,7 @@ LLM Decision Assistant
 
 ---
 
-### 🧠 Feature Engineering
+### Feature Engineering
 
 ```
 lag_1, lag_2, lag_4, lag_12, lag_26, lag_52
@@ -120,7 +120,7 @@ year, month, week
 
 ---
 
-### 📦 Inventory Optimization Engine
+### Inventory Optimization Engine
 
 ```
 Reorder Point = Demand × Lead Time + Safety Stock
@@ -152,7 +152,7 @@ Gap = Reorder Point - Inventory
 
 ---
 
-## 📊 Model Comparison
+## Model Comparison
 
 | Model   | MAPE       |
 | ------- | ---------- |
@@ -162,7 +162,7 @@ Gap = Reorder Point - Inventory
 
 ---
 
-## 📌 Example Output
+## Example Output
 
 ```
 Forecast: 1,695
@@ -173,7 +173,7 @@ Action: CRITICAL_OVERSTOCK
 
 ---
 
-## ⚡ API Layer
+## API Layer
 
 * POST /predict
 * POST /reorder-decision
@@ -181,7 +181,7 @@ Action: CRITICAL_OVERSTOCK
 
 ---
 
-## 📊 Dashboard
+## Dashboard
 
 * Forecast visualization
 * Inventory metrics
@@ -221,7 +221,7 @@ Dockerfile
 
 ---
 
-## 🚀 What This Project Demonstrates
+## What This Project Demonstrates
 
 * End-to-end ML system design
 * Feature-driven forecasting
